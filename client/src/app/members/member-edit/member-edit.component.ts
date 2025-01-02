@@ -5,11 +5,12 @@ import { MembersService } from '../../_services/members.service';
 import { ToastrService } from 'ngx-toastr';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { FormsModule, NgForm } from '@angular/forms';
+import { PhotoEditorComponent } from "../photo-editor/photo-editor.component";
 
 @Component({
   selector: 'app-member-edit',
   standalone: true,
-  imports: [TabsModule, FormsModule],
+  imports: [TabsModule, FormsModule, PhotoEditorComponent],
   templateUrl: './member-edit.component.html',
   styleUrl: './member-edit.component.css',
   host: {
@@ -48,5 +49,9 @@ export class MemberEditComponent implements OnInit{
     if (this.editForm()?.dirty) {
       event.returnValue = true;
     }
+  }
+
+  onMemberChange(event: Member) {
+    this.member = event;
   }
 }
